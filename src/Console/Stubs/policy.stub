@@ -1,0 +1,96 @@
+<?php
+
+namespace DummyNamespace;
+
+use Eightbits\PolicyAndPermissionGenerator\Traits\Permissions;
+use DummyFullModelClass;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class DummyClass
+{
+    use HandlesAuthorization,
+        Permissions;
+
+    /**
+     * Determine whether the user can view any
+     *
+     * @param  \App\User  $user
+     * @return mixed
+     */
+    // public function viewAny(User $user)
+    // {
+    //     
+    // }
+
+    /**
+     * Determine whether the user can view the model.
+     *
+     * @param  \App\User  $user
+     * @param  DummyModelClass  $model
+     * @return mixed
+     */
+    // public function view(User $user, $model)
+    // {
+    //     
+    // }
+
+    /**
+     * Determine whether the user can create models.
+     *
+     * @param  \App\User  $user
+     * @return mixed
+     */
+    // public function create(User $user)
+    // {
+    //     
+    // }
+
+    /**
+     * Determine whether the user can update the model.
+     *
+     * @param  \App\User  $user
+     * @param  DummyModelClass  $model
+     * @return mixed
+     */
+    // public function update(User $user, $model)
+    // {
+    //     
+    // }
+
+    /**
+     * Determine whether the user can delete the model.
+     *
+     * @param  \App\User  $user
+     * @param  DummyModelClass  $model
+     * @return mixed
+     */
+    // public function delete(User $user, $model)
+    // {
+    //     
+    // }
+
+    /**
+     * Determine whether the user can restore the model.
+     *
+     * @param  \App\User  $user
+     * @param  DummyModelClass  $model
+     * @return mixed
+     */
+    // public function restore(User $user, $model)
+    // {
+    //     
+    // }
+
+    /**
+     * Determine whether the user can permanently delete the model.
+     *
+     * @param  \App\User  $user
+     * @param  DummyModelClass  $model
+     * @return mixed
+     */
+    // public function forceDelete(User $user, $model)
+    // {
+    //     
+    // }
+}
