@@ -1,6 +1,6 @@
 <?php
 
-namespace Eightbits\PolicyAndPermissionGenerator\Console\Commands;
+namespace EightbitsNL\PolicyAndPermissionGenerator\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;

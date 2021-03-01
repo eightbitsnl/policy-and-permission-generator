@@ -1,6 +1,6 @@
 <?php
 
-namespace Eightbits\PolicyAndPermissionGenerator\Traits;
+namespace EightbitsNL\PolicyAndPermissionGenerator\Traits;
 
 use App\User;
 use Illuminate\Support\Str;

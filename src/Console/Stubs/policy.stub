@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use Eightbits\PolicyAndPermissionGenerator\Traits\Permissions;
+use EightbitsNL\PolicyAndPermissionGenerator\Traits\Permissions;
 use DummyFullModelClass;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
