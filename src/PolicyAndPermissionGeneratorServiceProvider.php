@@ -1,9 +1,9 @@
 <?php
 
-namespace EightbitsNL\PolicyAndPermissionGenerator;
+namespace Eightbitsnl\PolicyAndPermissionGenerator;
 
-use EightbitsNL\PolicyAndPermissionGenerator\Console\Commands\GenerateModelPermissions;
-use EightbitsNL\PolicyAndPermissionGenerator\Console\Commands\GenerateModelPolicies;
+use Eightbitsnl\PolicyAndPermissionGenerator\Console\Commands\GenerateModelPermissions;
+use Eightbitsnl\PolicyAndPermissionGenerator\Console\Commands\GenerateModelPolicies;
 use Illuminate\Support\ServiceProvider;
 
 class PolicyAndPermissionGeneratorServiceProvider extends ServiceProvider

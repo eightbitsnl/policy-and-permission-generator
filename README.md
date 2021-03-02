@@ -47,7 +47,7 @@ This command will scan the `/app/` directory for Models. For each model, it will
 
 namespace App\Policies;
 
-use EightbitsNL\PolicyAndPermissionGenerator\Traits\Permissions;
+use Eightbitsnl\PolicyAndPermissionGenerator\Traits\Permissions;
 use App\Article;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -65,7 +65,7 @@ See: [Laravel Docs](https://laravel.com/docs/8.x/authorization#policy-methods) f
 
 ### Trait
 
-Policies use the `EightbitsNL\PolicyAndPermissionGenerator\Traits\Permissions` trait.
+Policies use the `Eightbitsnl\PolicyAndPermissionGenerator\Traits\Permissions` trait.
 
 
  **Example:** Say, we're checking if a user can `update` an `Article`. 

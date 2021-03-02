@@ -1,5 +1,5 @@
 {
-    "name": "eightbitsnl/policy-and-permission-generator",
+    "name": "Eightbitsnl/policy-and-permission-generator",
     "description": "Policy and Permission Generator",
     "require": {
         
@@ -12,13 +12,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "EightbitsNL\\PolicyAndPermissionGenerator\\": "src/"
+            "Eightbitsnl\\PolicyAndPermissionGenerator\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "EightbitsNL\\PolicyAndPermissionGenerator\\PolicyAndPermissionGeneratorServiceProvider"
+                "Eightbitsnl\\PolicyAndPermissionGenerator\\PolicyAndPermissionGeneratorServiceProvider"
             ]
         }
     }
