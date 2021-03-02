@@ -1,6 +1,7 @@
 # Generates Permissions and Policies
 
-
+## :warning: Not production ready
+This has not been tested in production (yet).
 
 ## Permissions
 
