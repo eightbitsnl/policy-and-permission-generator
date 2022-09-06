@@ -1,16 +1,24 @@
+<!-- @format -->
+
 # Generates Permissions and Policies
 
 ## :warning: Not production ready
+
 This has not been tested in production (yet).
 
 ## Permissions
 
 ### Artisan command
-``` bash
+
+```bash
 php artisan permissions:generate
 ```
 
-This command will scan the `/app/` directory for Models. For each model, it will `firstOrCreate` permissions (using [spatie/laravel-permission](https://github.com/spatie/laravel-permission/)) for the following abilities:
+```bash
+php artisan permissions:generate --model="App\Models\Article
+```
+
+This command will scan the `/app/` or `/app/Models` directory for Models. For each model, it will `firstOrCreate` permissions (using [spatie/laravel-permission](https://github.com/spatie/laravel-permission/)) for the following abilities:
 
 ```
 create
@@ -23,6 +31,7 @@ forceDelete
 ```
 
 These Permissions will be named as : `{ModelName}.{ability}`, so for example if you have an `Article` model:
+
 ```
 Article.create
 Article.view
@@ -36,14 +45,14 @@ Article.forceDelete
 ## Policies
 
 ### Artisan command
-``` bash
+
+```bash
 php artisan policies:generate
 ```
 
 This command will scan the `/app/` directory for Models. For each model, it will publish a new `/app/Policies/{ModelName}Policy.php`, for example:
 
-
-``` php
+```php
 <?php
 
 namespace App\Policies;
@@ -63,34 +72,34 @@ class ArticlePolicy
 
 See: [Laravel Docs](https://laravel.com/docs/8.x/authorization#policy-methods) for more info on Policies.
 
-
 ### Trait
 
 Policies use the `Eightbitsnl\PolicyAndPermissionGenerator\Traits\Permissions` trait.
 
-
- **Example:** Say, we're checking if a user can `update` an `Article`. 
+**Example:** Say, we're checking if a user can `update` an `Article`.
 
 1. `Permissions` trait adds `before()` method to each generated `Policy`.
-The before method will be executed before any other methods on the policy. More info [Laravel Docs](https://laravel.com/docs/8.x/authorization#policy-filters).
-This `before()` method checks if the user has a Permission, for example `Article.update`.
+   The before method will be executed before any other methods on the policy. More info [Laravel Docs](https://laravel.com/docs/8.x/authorization#policy-filters).
+   This `before()` method checks if the user has a Permission, for example `Article.update`.
    - If the user **DOES NOT** have the Permission, it will return `false`
    - If the user **DOES** have the Permission, it will return `null`
 1. When the `before()` method returns `null`, the Policy method is checked next, for example `Article@update(User $user, Article $model)`.
-This method returns `true` by default.
+   This method returns `true` by default.
+
    ```php
    public function update(User $user, Article $model)
    {
-	   return true;
+   	   return true;
    }
    ```
 
    But, you can use this method to further write your app logic.
+
    ```php
    public function update(User $user, Article $model)
    {
-	   // user can only update their own articles
-	   return $user->id == $model->user_id;
+   	   // user can only update their own articles
+   	   return $user->id == $model->user_id;
    }
    ```
 
@@ -98,10 +107,9 @@ This method returns `true` by default.
 
 When you have super-admin, you might want to allow this user to `update` all `Articles`, even the ones created by other users:
 
-
-
 Then add a `Gate::after` to your `AuthServiceProvider`
-``` php
+
+```php
 class AuthServiceProvider extends ServiceProvider
 {
     // ...
@@ -122,6 +130,7 @@ class AuthServiceProvider extends ServiceProvider
 ```
 
 So now we can return `null` in our Policy methods instead of `false`, so we fall trough to the `Gate::after` check.
+
 ```php
 public function update(User $user, Article $model)
 {
@@ -133,11 +142,11 @@ public function update(User $user, Article $model)
 
 ##### TL;DR:
 
-1. The `before()` trait method checks if the user has a Permission. This returns `false` or `null`.  When `null` is returned:
+1. The `before()` trait method checks if the user has a Permission. This returns `false` or `null`. When `null` is returned:
 1. The `Article@update(User $user, Article $model)` can do additional checks, and returns `true`, `false`, or `null`. When `null` is returned:
 1. The `Gate::after` checks if the user is a super-admin, and returns `true` or `false`.
 
-
 ##### More info:
+
 - [Defining a Super-Admin](https://spatie.be/docs/laravel-permission/v3/basic-usage/super-admin) for [spatie/laravel-permission](https://github.com/spatie/laravel-permission/)
 - [When to use Gate::after in Laravel](https://freek.dev/1325-when-to-use-gateafter-in-laravel) by freek.dev

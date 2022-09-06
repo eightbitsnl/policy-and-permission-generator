@@ -2,8 +2,9 @@
 
 namespace Eightbitsnl\PolicyAndPermissionGenerator\Traits;
 
-use App\User;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
 
 trait Permissions
 {
@@ -13,7 +14,10 @@ trait Permissions
 			return null;
 
 		$permission = class_basename($model) . '.'. $ability;
-        return $user->can( $permission ) ? null : false;
+        return Cache::store('array')
+            ->remember(__METHOD__.'-u-'.optional($user)->id.'-p-'.$permission, 30, function() use ($user, $permission){
+                return $user->can( $permission ) ? null : false;;
+            });
 	}
 
     public function before(?User $user, $ability, $model)
