@@ -5,6 +5,7 @@ namespace Eightbitsnl\PolicyAndPermissionGenerator\Traits;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
+use Spatie\Permission\Exceptions\PermissionDoesNotExist;
 
 trait Permissions
 {
@@ -16,7 +17,16 @@ trait Permissions
 		$permission = class_basename($model) . '.'. $ability;
         return Cache::store('array')
             ->remember(__METHOD__.'-u-'.optional($user)->id.'-p-'.$permission, 30, function() use ($user, $permission){
-                return $user->can( $permission ) ? null : false;;
+                
+                try
+                {
+                    return $user->hasPermissionTo( $permission ) ? null : false;;
+                }
+                catch(PermissionDoesNotExist $e)
+                {
+                    return null;
+                }
+
             });
 	}
 
