@@ -75,6 +75,8 @@ class GenerateModelPermissions extends Command
 
     $input_model = $this->option("model");
 
+    $selected = null;
+
     if (!is_null($input_model)) {
       if ($models->contains($input_model)) {
         $selected = [$input_model];
