@@ -18,6 +18,10 @@ trait Permissions
         return Cache::store('array')
             ->remember(__METHOD__.'-u-'.optional($user)->id.'-p-'.$permission, 30, function() use ($user, $permission){
                 
+                // guests (e.g. Nova 4 checks policies on the login page) have no permissions
+                if( is_null($user) )
+                    return false;
+
                 try
                 {
                     return $user->hasPermissionTo( $permission ) ? null : false;;
