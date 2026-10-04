@@ -15,20 +15,14 @@
             "role": "Developer"
         }
     ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://nova.laravel.com"
-        }
-    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.2.0",
-        "illuminate/auth": "^7.0|^8.0|^9.0",
-        "illuminate/cache": "^7.0|^8.0|^9.0",
-        "illuminate/support": "^7.0|^8.0|^9.0",
-        "spatie/laravel-permission": "^3.0|^4.0|^5.0"
+        "php": ">=8.1",
+        "illuminate/auth": "^9.0|^10.0|^11.0|^12.0|^13.0",
+        "illuminate/cache": "^9.0|^10.0|^11.0|^12.0|^13.0",
+        "illuminate/support": "^9.0|^10.0|^11.0|^12.0|^13.0",
+        "spatie/laravel-permission": "^5.0|^6.0|^7.0|^8.0"
     },
     "extra": {
         "laravel": {
